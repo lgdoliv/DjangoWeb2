@@ -27,7 +27,7 @@ SECRET_KEY = 'e1#49r@@*yx8#p4sk#!b5(^=v^sqqeycke3ws1ab6ww1fr9av1'
 # DEBUG = True
 DEBUG = False
 # usamos * quando ainda nao temos um host
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['django2-lgo.herokuapp.com'] # ['*']
 
 # Application definition
 INSTALLED_APPS = [
