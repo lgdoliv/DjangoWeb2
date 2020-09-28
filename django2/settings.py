@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 # configuracao dos middleware´s
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', # descomentar para publicacao online
+    # 'whitenoise.middleware.WhiteNoiseMiddleware', # descomentar para publicacao online
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
