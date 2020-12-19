@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'django2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-""" Heroku nao tem mysql no plano gratis, alteramos para PostgreSQL 
+# Usando mysql no localhost
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -90,11 +90,13 @@ DATABASES = {
         'PORT': '3306'
     }
 }
+
+# Usando PostgreSQL no Heroku
 """
-# Usando PostgreSQL com Heroku
 DATABASES = {
     'default': dj_database_url.config()
 }
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -117,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
-# alterado para portugues-brasil
+
 LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Sao_Paulo'
@@ -142,8 +144,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'midia')
 # configuracao para simular o envio de email pela aplicacao - em desenvolvimento (comentar em producao)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+# parametros de configuracao para um email valido (em producao)
 """
-configuracao do email quando houver um email ativo para aplicacao
 EMAIL_HOST = 'localhost'
 EMAIL_HOST_USER = 'no-reply@seudominio.com.br'
 EMAIL_PORT = '587'

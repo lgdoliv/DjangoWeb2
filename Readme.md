@@ -1,41 +1,57 @@
 # DjangoWeb2
 
-Projeto em django para cadastrar dados no banco mysql e posteriormente buscar as informações para exibir na web.
+Projeto django para cadastro e consulta de dados atraves do banco mysql, visualização de imagens armanezadas e envio de formulario.
 
 # Funcionalidades
 
-- [ ] Cadastro de usuario e produto atraves da area administrativa do django.
-- [ ] Rotas para navegação entre index, produto, contato.
-- [ ] Pagina para informar erro no servidor (404, 500).
-- [ ] Arquivos estaticos para css, js e imagem.
+- [x] Cadastro de usuario e produto atraves da area administrativa do django.
+- [x] Rotas para navegação entre index, produto, contato e media
+- [x] Envio de formulário atraves da pagina contato.
 
-## Pacotes utilizados
+## Pacotes Principais
 
 ```bash
-asgiref
-autopep8
+dj-database-url
+dj-static
 Django
+django-bootstrap4
+django-stdimage
 gunicorn
+mysqlclient @ file:///C:/Django2/mysqlclient-1.4.6-cp37-cp37m-win32.whl
+psycopg2-binary
 pycodestyle
-pytz
-sqlparse
-toml
-whitenoise
+python-utils
 ```
 
 Use o gerenciador de pacotes [pip](https://pypi.org/) para instalação, exemplo:
 
 ```bash
-pip install Django gunicorn whitenoise
+pip install Django django-bootstrap4 django-stdimage gunicorn
 ```
+## Dica sobre o client do mysql
 
-## Uso do models no django
+Caso a instalação via pip apresente erro, o pacote binario pode ser instalado com os comandos:
+```bash
+pip install wheel
+pip install mysqlclient-1.4.6-cp37-cp37m-win32.whl
+```
+Existem outras versões do client disponiveis no [LFD](https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient)
+
+## Uso do ContatoForm no django
 
 ```python
-from django.db import models
+from core.forms import ContatoForm
 
-class Produto(models.Model):
-    nome = models.CharField('Nome', max_length=100)
-    preco = models.DecimalField('Preço', decimal_places=2, max_digits=8)
-    estoque = models.IntegerField('Quantidade em Estoque')
+def contato(request):
+    form = ContatoForm(request.POST or None)
+    if str(request.method) == 'POST':
+        if form.is_valid():
+            form.send_mail()
+            messages.success(request, 'Email enviado com sucesso!')
+            form = ContatoForm()
+        else:
+            messages.error(request, 'Erro ao enviar email')
+
+    context = {'form': form}
+    return render(request, 'contato.html', context)
 ```

@@ -1,6 +1,3 @@
-''' Views - '''
-
-# from typing import ContextManager
 from core.forms import ContatoForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -28,6 +25,7 @@ def contato(request):
 
 
 def produto(request):
+    # valida se o usuario esta logado
     if str(request.user) != 'AnonymousUser':
         if str(request.method) == 'POST':
             form = ProdutoModelForm(request.POST, request.FILES)
