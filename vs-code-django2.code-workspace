@@ -5,6 +5,8 @@
 		}
 	],
 	"settings": {
-		"python.analysis.autoImportCompletions": false
+		"python.analysis.autoImportCompletions": false,
+		"files.encoding": "utf8",
+		"editor.tokenColorCustomizations": null
 	}
 }

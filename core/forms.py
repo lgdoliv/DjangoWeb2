@@ -1,8 +1,5 @@
-''' Foms - '''
-
 from django import forms
 from django.core.mail.message import EmailMessage
-# from django.forms import fields
 from .models import Produto
 
 

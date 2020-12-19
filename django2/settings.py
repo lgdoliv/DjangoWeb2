@@ -26,8 +26,9 @@ SECRET_KEY = 'e1#49r@@*yx8#p4sk#!b5(^=v^sqqeycke3ws1ab6ww1fr9av1'
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 DEBUG = False
-# usamos * quando ainda nao temos um host
-ALLOWED_HOSTS = ['django2-lgo.herokuapp.com'] # ['*']
+
+ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['django2-lgo.herokuapp.com']
 
 # Application definition
 INSTALLED_APPS = [
@@ -42,9 +43,9 @@ INSTALLED_APPS = [
     'stdimage',
 ]
 # configuracao dos middleware´s
+# 'whitenoise.middleware.WhiteNoiseMiddleware', somente no deploy
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware', # descomentar para publicacao online
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -78,7 +79,7 @@ WSGI_APPLICATION = 'django2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-""" Heroku nao tem mysql no plano gratis, entao vamos usar o PostgreSQL 
+""" Heroku nao tem mysql no plano gratis, alteramos para PostgreSQL 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -130,6 +131,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
+
 # configurando arquivos estaticos
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -137,8 +139,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'midia')
 
-# configuracao para simular o envio de email pela aplicacao
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #comentar para publicacao online
+# configuracao para simular o envio de email pela aplicacao - em desenvolvimento (comentar em producao)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 """
 configuracao do email quando houver um email ativo para aplicacao
