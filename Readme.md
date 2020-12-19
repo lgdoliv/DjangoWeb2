@@ -28,7 +28,7 @@ Use o gerenciador de pacotes [pip](https://pypi.org/) para instalação, exemplo:
 ```bash
 pip install Django django-bootstrap4 django-stdimage gunicorn
 ```
-## Dica sobre o client do mysql
+## Client MySql
 
 Caso a instalação via pip apresente erro, o pacote binario pode ser instalado com os comandos:
 ```bash
